@@ -1,0 +1,19 @@
+name: clean
+on:
+  workflow_dispatch:
+jobs:
+  job_one:
+    name: clean
+    runs-on: ubuntu-latest
+    steps:
+      - name: testing
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.HOST }}
+          username: ${{ secrets.NAME }}
+          password: ${{ secrets.PASSWORD }}
+          port: ${{ secrets.PORT }}
+          script: |
+              cd ../pub
+              unalias rm
+              rm -rf cmsc389T-web-template
